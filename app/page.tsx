@@ -859,7 +859,6 @@ export default function Home() {
       <section className="section reveal" id="comparison">
         <div className="container">
           <h2 className="section-title">الفرق بين العمل <span className="gold">بدون مكتبة</span> والعمل معها</h2>
-          <p className="section-sub">هذا القسم مهم جدًا للمبيعات لأنه يجعل العميل يرى الفرق العملي بوضوح بدل الاكتفاء بالوعود العامة.</p>
           <div className="comparison-wrap">
             <div className="comparison-grid">
               <div className="comparison-card bad">
@@ -939,7 +938,6 @@ export default function Home() {
       <section className="section reveal" id="bonus">
         <div className="container">
           <h2 className="section-title">مزايا إضافية تجعل العرض <span className="gold">أقوى في البيع</span></h2>
-          <p className="section-sub">هذه النقاط تضيف قيمة محسوسة وتزيد رغبة الزائر في اتخاذ قرار الشراء الآن بدل التأجيل.</p>
           <div className="bonus-wrap">
             <div className="bonus-grid">
               <div className="bonus-card">
@@ -996,7 +994,6 @@ export default function Home() {
       <section className="section reveal" id="testimonials">
         <div className="container">
           <h2 className="section-title">ماذا يقول من يهتمون بـ <span className="gold">السرعة والجودة؟</span></h2>
-          <p className="section-sub">قسم الشهادات يرفع الثقة ويقلل التردد قبل الشراء. يمكنك لاحقًا استبدال النصوص الحالية بشهادات حقيقية من عملائك.</p>
           <div className="testimonial-wrap">
             <div className="testimonial-grid">
               <div className="testimonial-card">
@@ -1047,7 +1044,6 @@ export default function Home() {
       <section className="section reveal" id="guarantee">
         <div className="container">
           <h2 className="section-title">إزالة التردد قبل الشراء <span className="gold">تزيد التحويل</span></h2>
-          <p className="section-sub">هذا القسم يعالج المخاوف الأخيرة لدى العميل ويشجعه على اتخاذ القرار الآن.</p>
           <div className="guarantee-wrap">
             <div className="guarantee-grid">
               <div className="guarantee-card">
@@ -1092,7 +1088,7 @@ export default function Home() {
             <h2>ابدأ الآن وامنح نفسك أفضلية واضحة في كل مشروع جديد</h2>
             <p>إذا كنت تريد تقليل وقت التحضير، زيادة الخيارات أمام العميل، وتحسين جودة العرض والمظهر الاحترافي، فهذه المكتبة صممت لهذا الهدف بالضبط.</p>
             <div className="hero-actions" style={{ justifyContent: "center", marginBottom: 0 }}>
-              <a className="btn btn-primary" href="https://wa.me/213655808898">📂 اطلب المكتبة الآن عبر واتساب</a>
+              <a className="btn btn-primary" href="https://wa.me/213655808898">📂 اطلب المكتبة الآن</a>
               <a className="btn btn-secondary" href="#library">عرض محتويات المكتبة</a>
             </div>
             <div className="cta-guarantee">✅ تحميل فوري بعد الطلب — 🗂️ تنظيم واضح — 💎 تنوع احترافي</div>
@@ -1104,7 +1100,6 @@ export default function Home() {
       <section className="section reveal" id="faq">
         <div className="container">
           <h2 className="section-title">الأسئلة <span className="gold">الشائعة</span></h2>
-          <p className="section-sub">إجابات واضحة تزيل الاعتراضات الأخيرة وتساعد العميل على اتخاذ القرار بسرعة.</p>
           <div className="faq-wrap">
             <div className="faq-list">
               <div className="faq-item">
