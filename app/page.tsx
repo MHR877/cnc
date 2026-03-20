@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 
+
 export default function Home() {
   const [countdown, setCountdown] = useState({
     days: "00",
@@ -95,6 +96,7 @@ export default function Home() {
         html{scroll-behavior:smooth}
         body{
           margin:0;
+          padding-top:72px;
           font-family:var(--font-cairo),system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
           background:
             radial-gradient(circle at top right, rgba(245,158,11,.12), transparent 22%),
@@ -123,6 +125,76 @@ export default function Home() {
           text-align:center;
           color:var(--muted);
           font-size:18px;
+        }
+
+        /* Top Offer Banner */
+        .top-offer-banner{
+          position:fixed;
+          top:0;
+          left:0;
+          right:0;
+          z-index:1200;
+          background:linear-gradient(90deg,#16a34a 0%, #22c55e 35%, #dc2626 100%);
+          color:#fff;
+          box-shadow:0 10px 30px rgba(0,0,0,.22);
+          border-bottom:1px solid rgba(255,255,255,.15);
+        }
+        .top-offer-banner .banner-inner{
+          width:min(calc(100% - 24px),var(--max));
+          margin-inline:auto;
+          min-height:60px;
+          display:flex;
+          align-items:center;
+          justify-content:space-between;
+          gap:14px;
+          padding:10px 0;
+        }
+        .top-offer-banner .banner-text{
+          display:flex;
+          align-items:center;
+          gap:12px;
+        }
+        .top-offer-banner .flag{
+          width:42px;
+          height:42px;
+          border-radius:14px;
+          display:grid;
+          place-items:center;
+          background:rgba(255,255,255,.18);
+          border:1px solid rgba(255,255,255,.22);
+          font-size:22px;
+          flex:0 0 42px;
+        }
+        .top-offer-banner .banner-copy strong{
+          display:block;
+          font-size:17px;
+          font-weight:900;
+          line-height:1.2;
+        }
+        .top-offer-banner .banner-copy span{
+          display:block;
+          font-size:13px;
+          font-weight:700;
+          opacity:.96;
+          line-height:1.4;
+        }
+        .top-offer-banner .banner-btn{
+          display:inline-flex;
+          align-items:center;
+          justify-content:center;
+          min-height:42px;
+          padding:0 18px;
+          border-radius:999px;
+          background:#fff;
+          color:#166534;
+          font-weight:900;
+          font-size:14px;
+          white-space:nowrap;
+          box-shadow:0 8px 20px rgba(0,0,0,.15);
+          transition:.25s ease;
+        }
+        .top-offer-banner .banner-btn:hover{
+          transform:translateY(-1px);
         }
 
         .hero{
@@ -663,6 +735,20 @@ export default function Home() {
         }
 
         @media (max-width: 860px){
+          body{padding-top:86px}
+          .top-offer-banner .banner-inner{
+            min-height:auto;
+            padding:10px 0;
+            flex-direction:column;
+            align-items:stretch;
+          }
+          .top-offer-banner .banner-text{
+            width:100%;
+            justify-content:flex-start;
+          }
+          .top-offer-banner .banner-btn{
+            width:100%;
+          }
           .topbar,
           .hero-grid,
           .problem-grid,
@@ -689,6 +775,19 @@ export default function Home() {
           .price-box{grid-template-columns:1fr}
         }
       ` }} />
+
+      <a className="top-offer-banner" href="https://wa.me/213655808898" aria-label="عرض خاص للجزائريين اطلب عبر واتساب">
+        <div className="banner-inner">
+          <div className="banner-text">
+            <div className="flag">🇩🇿</div>
+            <div className="banner-copy">
+              <strong>عرض خاص للجزائريين</strong>
+              <span>اطلب مكتبة MegaCNC الآن مباشرة عبر واتساب</span>
+            </div>
+          </div>
+          <span className="banner-btn">اطلب الآن</span>
+        </div>
+      </a>
 
       <header className="hero">
         <div className="container">
@@ -768,6 +867,9 @@ export default function Home() {
                   <span className="price-old">$99</span>
                   <span className="price-new">$59.99</span>
                   <span className="price-note">دفع مرة واحدة فقط</span>
+                </div>
+                <div style={{ gridColumn: "span 2", marginTop: "10px" }}>
+                  <a className="btn btn-primary" style={{ width: "100%" }} href="/checkout">ابدأ عملية الشراء الآن</a>
                 </div>
               </div>
             </div>
@@ -1088,7 +1190,7 @@ export default function Home() {
             <h2>ابدأ الآن وامنح نفسك أفضلية واضحة في كل مشروع جديد</h2>
             <p>إذا كنت تريد تقليل وقت التحضير، زيادة الخيارات أمام العميل، وتحسين جودة العرض والمظهر الاحترافي، فهذه المكتبة صممت لهذا الهدف بالضبط.</p>
             <div className="hero-actions" style={{ justifyContent: "center", marginBottom: 0 }}>
-              <a className="btn btn-primary" href="https://wa.me/213655808898">📂 اطلب المكتبة الآن</a>
+              <a className="btn btn-primary" href="/checkout">📂 اطلب المكتبة الآن</a>
               <a className="btn btn-secondary" href="#library">عرض محتويات المكتبة</a>
             </div>
             <div className="cta-guarantee">✅ تحميل فوري بعد الطلب — 🗂️ تنظيم واضح — 💎 تنوع احترافي</div>
@@ -1133,7 +1235,7 @@ export default function Home() {
 
       <a className="floating-whatsapp" href="https://wa.me/213655808898" aria-label="تواصل عبر واتساب">
         <span>واتساب</span>
-        <strong>اطلب الآن</strong>
+        <strong>واتساب المساعدة</strong>
       </a>
     </>
   );
