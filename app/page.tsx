@@ -993,46 +993,46 @@ export default function Home() {
           <h2 className="section-title">ماذا ستجد <span className="gold">داخل المكتبة؟</span></h2>
           <p className="section-sub">كل فئة تم اختيارها لأنها مطلوبة فعليًا وتساعدك على خدمة مشاريع أكثر بمظهر تجاري أقوى.</p>
           <div className="library-grid">
-            <div className="library-card" style={{ backgroundImage: "url('/images/door.jpg')" }}>
+            <a href="https://drive.google.com/drive/folders/1DRS83z8WKOjznd8JbOR9PwhHox2mOC-U?usp=sharing" target="_blank" className="library-card" style={{ backgroundImage: "url('/images/door.jpg')", textDecoration: 'none', display: 'block' }}>
               <span className="tag">الأكثر طلبًا</span>
               <h3>زخارف خشبية</h3>
               <p>نقوش كلاسيكية وفاخرة مناسبة للأثاث والديكور الراقي.</p>
-            </div>
-            <div className="library-card" style={{ backgroundImage: "url('/images/door.jpg')" }}>
+            </a>
+            <a href="https://drive.google.com/drive/folders/1DRS83z8WKOjznd8JbOR9PwhHox2mOC-U?usp=sharing" target="_blank" className="library-card" style={{ backgroundImage: "url('/images/door.jpg')", textDecoration: 'none', display: 'block' }}>
               <span className="tag">جاهز للعرض</span>
               <h3>تصاميم أبواب</h3>
               <p>عناصر زخرفية غنية تمنحك خيارات أقوى أمام العميل.</p>
-            </div>
-            <div className="library-card" style={{ backgroundImage: "url('/images/door.jpg')" }}>
+            </a>
+            <a href="https://drive.google.com/drive/folders/1DRS83z8WKOjznd8JbOR9PwhHox2mOC-U?usp=sharing" target="_blank" className="library-card" style={{ backgroundImage: "url('/images/door.jpg')", textDecoration: 'none', display: 'block' }}>
               <span className="tag">ديكور فاخر</span>
               <h3>إطارات مرايا</h3>
               <p>تصاميم تضيف قيمة بصرية عالية لمشاريع الديكور الداخلي.</p>
-            </div>
-            <div className="library-card" style={{ backgroundImage: "url('/images/door.jpg')" }}>
+            </a>
+            <a href="https://drive.google.com/drive/folders/1DRS83z8WKOjznd8JbOR9PwhHox2mOC-U?usp=sharing" target="_blank" className="library-card" style={{ backgroundImage: "url('/images/door.jpg')", textDecoration: 'none', display: 'block' }}>
               <span className="tag">مظهر قوي</span>
               <h3>أسقف معلقة</h3>
               <p>عناصر بارزة تمنح المشروع عمقًا بصريًا وفخامة أكبر.</p>
-            </div>
-            <div className="library-card" style={{ backgroundImage: "url('/images/door.jpg')" }}>
+            </a>
+            <a href="https://drive.google.com/drive/folders/1DRS83z8WKOjznd8JbOR9PwhHox2mOC-U?usp=sharing" target="_blank" className="library-card" style={{ backgroundImage: "url('/images/door.jpg')", textDecoration: 'none', display: 'block' }}>
               <span className="tag">للمساحات الراقية</span>
               <h3>لوحات دائرية</h3>
               <p>نقوش زخرفية ترفع قيمة العرض في مشاريع الجدران والواجهات الداخلية.</p>
-            </div>
-            <div className="library-card" style={{ backgroundImage: "url('/images/door.jpg')" }}>
+            </a>
+            <a href="https://drive.google.com/drive/folders/1DRS83z8WKOjznd8JbOR9PwhHox2mOC-U?usp=sharing" target="_blank" className="library-card" style={{ backgroundImage: "url('/images/door.jpg')", textDecoration: 'none', display: 'block' }}>
               <span className="tag">كلاسيكي فاخر</span>
               <h3>ديكورات جدارية</h3>
               <p>تفاصيل مناسبة للمجالس والصالات والمشاريع التي تحتاج فخامة واضحة.</p>
-            </div>
-            <div className="library-card" style={{ backgroundImage: "url('/images/door.jpg')" }}>
+            </a>
+            <a href="https://drive.google.com/drive/folders/1DRS83z8WKOjznd8JbOR9PwhHox2mOC-U?usp=sharing" target="_blank" className="library-card" style={{ backgroundImage: "url('/images/door.jpg')", textDecoration: 'none', display: 'block' }}>
               <span className="tag">مرونة أعلى</span>
               <h3>عناصر زخرفية</h3>
               <p>تفاصيل متعددة قابلة للاستخدام في أكثر من نوع مشروع.</p>
-            </div>
-            <div className="library-card" style={{ backgroundImage: "url('/images/door.jpg')" }}>
+            </a>
+            <a href="https://drive.google.com/drive/folders/1DRS83z8WKOjznd8JbOR9PwhHox2mOC-U?usp=sharing" target="_blank" className="library-card" style={{ backgroundImage: "url('/images/door.jpg')", textDecoration: 'none', display: 'block' }}>
               <span className="tag">قيمة تجارية</span>
               <h3>تنوع يخدم المبيعات</h3>
               <p>كلما زادت خياراتك أمام العميل، زادت فرص الإقناع وإغلاق الصفقة.</p>
-            </div>
+            </a>
           </div>
         </div>
       </section>
