@@ -4,13 +4,13 @@ import { useEffect, useState } from "react";
 import { supabase } from "@/lib/supabase";
 import { useRouter } from "next/navigation";
 import { 
-  BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer,
-  LineChart, Line
+  BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer
 } from 'recharts';
 import { LayoutDashboard, Users, CreditCard, LogOut, TrendingUp } from 'lucide-react';
 
 export default function AdminDashboard() {
   const [checkouts, setCheckouts] = useState<any[]>([]);
+  const [chartData, setChartData] = useState<{name: string, orders: number}[]>([]);
   const [loading, setLoading] = useState(true);
   const [stats, setStats] = useState({ totalRevenue: 0, totalOrders: 0, lastMonth: 0 });
   const router = useRouter();
@@ -24,7 +24,7 @@ export default function AdminDashboard() {
       }
 
       // Fetch Checkouts
-      const { data, error } = await supabase
+      const { data } = await supabase
         .from("checkouts")
         .select("*")
         .order("created_at", { ascending: false });
@@ -32,12 +32,25 @@ export default function AdminDashboard() {
       if (data) {
         setCheckouts(data);
         
-        const completed = data.filter(c => c.status === "completed");
+        const completed = data.filter((c: any) => c.status === "completed");
         setStats({
-          totalRevenue: completed.reduce((acc, curr) => acc + Number(curr.amount || 0), 0),
+          totalRevenue: completed.reduce((acc: number, curr: any) => acc + Number(curr.amount || 0), 0),
           totalOrders: completed.length,
-          lastMonth: completed.filter(c => new Date(c.created_at) > new Date(Date.now() - 30 * 24 * 60 * 60 * 1000)).length
+          lastMonth: completed.filter((c: any) => new Date(c.created_at) > new Date(Date.now() - 30 * 24 * 60 * 60 * 1000)).length
         });
+
+        // Prepare chart data (last 7 days)
+        const baseDate = new Date();
+        baseDate.setHours(0,0,0,0);
+        const newChartData = Array.from({ length: 7 }).map((_, i) => {
+          const d = new Date(baseDate.getTime() - (6 - i) * 24 * 60 * 60 * 1000);
+          const dateStr = d.toLocaleDateString();
+          const count = data.filter((c: any) => 
+            c.status === "completed" && new Date(c.created_at).toLocaleDateString() === dateStr
+          ).length;
+          return { name: dateStr, orders: count };
+        });
+        setChartData(newChartData);
       }
       setLoading(false);
     };
@@ -50,14 +63,6 @@ export default function AdminDashboard() {
     router.push("/admin/login");
   };
 
-  // Prepare chart data (last 7 days)
-  const chartData = Array.from({ length: 7 }).map((_, i) => {
-    const date = new Date(Date.now() - (6 - i) * 24 * 60 * 60 * 1000).toLocaleDateString();
-    const count = checkouts.filter(c => 
-      c.status === "completed" && new Date(c.created_at).toLocaleDateString() === date
-    ).length;
-    return { name: date, orders: count };
-  });
 
   if (loading) return <div style={{ background: "#09111f", color: "#fff", height: "100vh", display: "flex", alignItems: "center", justifyContent: "center" }}>جاري التحميل...</div>;
 
@@ -125,9 +130,9 @@ export default function AdminDashboard() {
       
       <div className="sidebar">
         <h2 style={{ color: "#f59e0b", marginBottom: "40px", fontSize: "24px" }}>CNC Admin</h2>
-        <a href="#" className="nav-item active"><LayoutDashboard size={20} /> لوحة التحكم</a>
-        <a href="#" className="nav-item"><CreditCard size={20} /> المبيعات</a>
-        <a href="#" className="nav-item"><Users size={20} /> العملاء</a>
+        <a href="/admin/dashboard" className="nav-item active"><LayoutDashboard size={20} /> لوحة التحكم</a>
+        <a href="/admin/checkouts" className="nav-item"><CreditCard size={20} /> جميع الطلبات</a>
+        <a href="/admin/clients" className="nav-item"><Users size={20} /> العملاء</a>
         <div style={{ marginTop: "auto" }}>
           <button onClick={handleLogout} className="nav-item" style={{ background: "transparent", border: "none", width: "100%", cursor: "pointer" }}>
             <LogOut size={20} /> تسجيل الخروج
