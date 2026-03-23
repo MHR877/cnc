@@ -89,7 +89,7 @@ export default function Home() {
           --shadow:0 24px 60px rgba(0,0,0,.28);
           --radius:24px;
           --radius-sm:18px;
-          --max:1180px;
+          --max:2020px;
         }
 
         *{box-sizing:border-box}
@@ -1032,6 +1032,21 @@ export default function Home() {
               <span className="tag">قيمة تجارية</span>
               <h3>تنوع يخدم المبيعات</h3>
               <p>كلما زادت خياراتك أمام العميل، زادت فرص الإقناع وإغلاق الصفقة.</p>
+            </a>
+            <a href="https://drive.google.com/drive/folders/1DRS83z8WKOjznd8JbOR9PwhHox2mOC-U?usp=sharing" target="_blank" className="library-card" style={{ backgroundImage: "url('/cnc desings .jpeg')", textDecoration: 'none', display: 'block' }}>
+              <span className="tag">تنوع كبير</span>
+              <h3>تصاميم CNC متنوعة</h3>
+              <p>مجموعة واسعة من التصاميم التي تغطي مختلف الاحتياجات الفنية والديكورية.</p>
+            </a>
+            <a href="https://drive.google.com/drive/folders/1DRS83z8WKOjznd8JbOR9PwhHox2mOC-U?usp=sharing" target="_blank" className="library-card" style={{ backgroundImage: "url('/laser cut screen designs.jpeg')", textDecoration: 'none', display: 'block' }}>
+              <span className="tag">تصاميم عصرية</span>
+              <h3>شاشات قص ليزر</h3>
+              <p>تصاميم شاشات وقواطع ليزر حديثة تضفي لمسة جمالية فريدة على المساحات.</p>
+            </a>
+            <a href="https://drive.google.com/drive/folders/1DRS83z8WKOjznd8JbOR9PwhHox2mOC-U?usp=sharing" target="_blank" className="library-card" style={{ backgroundImage: "url('/laser cut cat house.jpeg')", textDecoration: 'none', display: 'block' }}>
+              <span className="tag">أفكار إبداعية</span>
+              <h3>بيوت قطط خشبية</h3>
+              <p>نماذج إبداعية لبيوت القطط تجمع بين الراحة والشكل الجمالي المميز.</p>
             </a>
           </div>
         </div>
