@@ -11,6 +11,22 @@ declare global {
 }
 
 export default function Checkout() {
+  const isDev = process.env.NODE_ENV !== "production";
+  
+  // Use Sandbox in development, Live in production
+  // We fall back to Sandbox keys if Live ones are missing to avoid breaking the UI
+  const clientId = (isDev || !process.env.NEXT_PUBLIC_PAYPAL_LIVE_CLIENT_ID)
+    ? (process.env.NEXT_PUBLIC_PAYPAL_SANDBOX_CLIENT_ID || "BAAM-e55iDoQOdggojTqOpCsyUyTyC5inIt2r7L4YFsnVPybcjbWffSrWSnQOtbE8KWWIkDAFWHwtZjj3g")
+    : process.env.NEXT_PUBLIC_PAYPAL_LIVE_CLIENT_ID;
+
+  const buttonId = (isDev || !process.env.NEXT_PUBLIC_PAYPAL_LIVE_BUTTON_ID)
+    ? (process.env.NEXT_PUBLIC_PAYPAL_SANDBOX_BUTTON_ID || "F9B3NNT4K8YHN")
+    : process.env.NEXT_PUBLIC_PAYPAL_LIVE_BUTTON_ID;
+
+  useEffect(() => {
+    console.log(`MegaCNC: PayPal is running in ${isDev ? "SANDBOX" : "LIVE"} mode.`);
+  }, [isDev]);
+
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
@@ -66,19 +82,25 @@ export default function Checkout() {
 
     const initPayPal = () => {
       const win = window as any;
+
       if (win.paypal && win.paypal.HostedButtons) {
         if (paypalContainerRef.current && paypalContainerRef.current.innerHTML === "") {
           win.paypal.HostedButtons({
-            hostedButtonId: "F9B3NNT4K8YHN",
+            hostedButtonId: buttonId,
             onApprove: async (data: any) => {
               const { data: updatedData } = await supabase
                 .from("checkouts")
-                .update({ status: "completed", payment_id: data.orderID })
+                .update({ 
+                  status: "completed", 
+                  payment_id: data.orderID,
+                  fingerprint: getFingerprint() // Re-capture to lock the paying device
+                })
                 .eq("id", checkoutId)
                 .select()
                 .single();
               
               if (updatedData) {
+                console.log("Payment completed and device fingerprint locked.");
                 // Send email via our API
                 fetch("/api/send-email", {
                   method: "POST",
@@ -107,7 +129,7 @@ export default function Checkout() {
                 .eq("id", checkoutId);
               setStatus("error");
             }
-          }).render("#paypal-container-F9B3NNT4K8YHN");
+          }).render(`#paypal-container-${buttonId}`);
         }
       }
     };
@@ -122,7 +144,7 @@ export default function Checkout() {
     return () => {
       window.removeEventListener("paypal-loaded", handleInit);
     };
-  }, [status, checkoutId]);
+  }, [status, checkoutId, buttonId]);
 
   if (status === "success") {
     return (
@@ -165,7 +187,7 @@ export default function Checkout() {
           <h1>تم الدفع بنجاح! 🎉</h1>
           <p>شكراً لك {formData.fullName}. لقد تم تأكيد طلبك.</p>
           <p>سيتم إرسال رابط تحميل المكتبة إلى بريدك الإلكتروني ({formData.email}) خلال دقائق.</p>
-          <p style={{ marginTop: "20px", fontSize: "14px", color: "#94a3b8" }}>الرابط سيكون صالحاً لمدة 48 ساعة فقط.</p>
+          <p style={{ marginTop: "20px", fontSize: "14px", color: "#94a3b8" }}>الرابط سيكون صالحاً لمدة 72 ساعة فقط.</p>
           <a href="/" className="btn-home">العودة للرئيسية</a>
         </div>
       </div>
@@ -227,7 +249,7 @@ export default function Checkout() {
         }
         .btn-start:hover { transform: translateY(-2px); background: #fbbf24; }
         .btn-start:disabled { opacity: 0.5; cursor: not-allowed; }
-        #paypal-container-F9B3NNT4K8YHN { margin-top: 20px; min-height: 150px; }
+        #paypal-container-${buttonId} { margin-top: 20px; min-height: 150px; }
         .error-msg { color: #ef4444; margin-top: 12px; font-size: 14px; }
       ` }} />
 
@@ -280,7 +302,7 @@ export default function Checkout() {
         ) : (
           <div>
             <p>تم حفظ معلوماتك. يرجى إتمام الدفع عبر PayPal أدناه:</p>
-            <div id="paypal-container-F9B3NNT4K8YHN" ref={paypalContainerRef}></div>
+            <div id={`paypal-container-${buttonId}`} ref={paypalContainerRef}></div>
             <button onClick={() => setStatus("idle")} style={{ background: "transparent", border: "none", color: "#64748b", cursor: "pointer", marginTop: "10px" }}>تعديل المعلومات</button>
           </div>
         )}
@@ -291,7 +313,7 @@ export default function Checkout() {
       </div>
 
       <Script
-        src="https://www.paypal.com/sdk/js?client-id=BAAM-e55iDoQOdggojTqOpCsyUyTyC5inIt2r7L4YFsnVPybcjbWffSrWSnQOtbE8KWWIkDAFWHwtZjj3g&components=hosted-buttons&disable-funding=venmo&currency=USD"
+        src={`https://www.paypal.com/sdk/js?client-id=${clientId}&components=hosted-buttons&disable-funding=venmo&currency=USD`}
         onLoad={() => {
           const event = new CustomEvent("paypal-loaded");
           window.dispatchEvent(event);

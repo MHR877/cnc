@@ -839,14 +839,14 @@ export default function Home() {
             <div>
               <div className="hero-card">
                 <div className="preview-grid">
-                  <div className="preview-tile" style={{ backgroundImage: "url('/images/44.png')" }}>
-                    <strong>زخارف خشبية</strong>
+                  <div className="preview-tile" style={{ backgroundImage: "url('/cnc desings .jpeg')" }}>
+                    <strong>تصاميم متنوعة</strong>
                   </div>
-                  <div className="preview-tile" style={{ backgroundImage: "url('/images/55.png')" }}>
-                    <strong>أبواب حديثة</strong>
+                  <div className="preview-tile" style={{ backgroundImage: "url('/images/laser cut screen designs.jpeg')" }}>
+                    <strong>شاشات قص ليزر</strong>
                   </div>
-                  <div className="preview-tile" style={{ backgroundImage: "url('/images/66.png')" }}>
-                    <strong>إطارات مرايا</strong>
+                  <div className="preview-tile" style={{ backgroundImage: "url('/images/lasercutcathouse.jpeg')" }}>
+                    <strong>بيوت قطط خشبية</strong>
                   </div>
                   <div className="preview-tile" style={{ backgroundImage: "url('/images/3333333.png')" }}>
                     <strong>أسقف معلقة</strong>
@@ -1033,21 +1033,7 @@ export default function Home() {
               <h3>تنوع يخدم المبيعات</h3>
               <p>كلما زادت خياراتك أمام العميل، زادت فرص الإقناع وإغلاق الصفقة.</p>
             </a>
-            <a href="https://drive.google.com/drive/folders/1DRS83z8WKOjznd8JbOR9PwhHox2mOC-U?usp=sharing" target="_blank" className="library-card" style={{ backgroundImage: "url('/cnc desings .jpeg')", textDecoration: 'none', display: 'block' }}>
-              <span className="tag">تنوع كبير</span>
-              <h3>تصاميم CNC متنوعة</h3>
-              <p>مجموعة واسعة من التصاميم التي تغطي مختلف الاحتياجات الفنية والديكورية.</p>
-            </a>
-            <a href="https://drive.google.com/drive/folders/1DRS83z8WKOjznd8JbOR9PwhHox2mOC-U?usp=sharing" target="_blank" className="library-card" style={{ backgroundImage: "url('/laser cut screen designs.jpeg')", textDecoration: 'none', display: 'block' }}>
-              <span className="tag">تصاميم عصرية</span>
-              <h3>شاشات قص ليزر</h3>
-              <p>تصاميم شاشات وقواطع ليزر حديثة تضفي لمسة جمالية فريدة على المساحات.</p>
-            </a>
-            <a href="https://drive.google.com/drive/folders/1DRS83z8WKOjznd8JbOR9PwhHox2mOC-U?usp=sharing" target="_blank" className="library-card" style={{ backgroundImage: "url('/laser cut cat house.jpeg')", textDecoration: 'none', display: 'block' }}>
-              <span className="tag">أفكار إبداعية</span>
-              <h3>بيوت قطط خشبية</h3>
-              <p>نماذج إبداعية لبيوت القطط تجمع بين الراحة والشكل الجمالي المميز.</p>
-            </a>
+          
           </div>
         </div>
       </section>
