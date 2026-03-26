@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 
-
 export default function Home() {
   const [countdown, setCountdown] = useState({
     days: "00",
@@ -89,7 +88,7 @@ export default function Home() {
           --shadow:0 24px 60px rgba(0,0,0,.28);
           --radius:24px;
           --radius-sm:18px;
-          --max:2020px;
+          --max: 1500px;
         }
 
         *{box-sizing:border-box}
